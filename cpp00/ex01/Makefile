@@ -1,4 +1,4 @@
-SRC = Contact.cpp PhoneBook.cpp #main.cpp
+SRC = Contact.cpp PhoneBook.cpp main.cpp
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -f
@@ -15,7 +15,7 @@ $(NAME): $(OBJ)
 clean:
 	$(RM) $(OBJ)
 
-fclean: clean
+fclean: #clean
 	$(RM) $(NAME)
 
 re: fclean all
