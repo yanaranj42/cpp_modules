@@ -21,6 +21,7 @@ int is_validNumber(std::string input)
 
 PhoneBook::PhoneBook()
 {
+	this->index = 0;
 }      
 PhoneBook::~PhoneBook()
 {
@@ -36,31 +37,34 @@ void PhoneBook::welcome()const
     std::cout << "----------------------------------" << std::endl;
 	std::cout << std::endl;
 }
+
 void	PhoneBook::add_contact(void)
 {
 	std::string str;
+	//int			index;
 
+	if (this->index > 7)
+		std::cout << "You may overwrite a contact" << this->contacts[index % 8].get_firstname() << std::endl;
 	str = "";
-	this->index = 0;
 	while (!std::cin.eof() && str == "")
 	{
 		std::cout << "First Name: ";
 		if (getline(std::cin, str) && str != "")
-			this->contacts[index].set_firstname(str);
+			this->contacts[index % 8].set_firstname(str);
 	}
 	str = "";
 	while (!std::cin.eof() && str == "")
 	{
 		std::cout << "Last Name: ";
 		if (getline(std::cin, str) && str != "")
-			this->contacts[index].set_lastname(str);
+			this->contacts[index % 8].set_lastname(str);
 	}
 	str = "";
 	while (!std::cin.eof() && str == "")
 	{
 		std::cout << "Nickname: ";
 		if (getline(std::cin, str) && str != "")
-			this->contacts[index].set_nickname(str);
+			this->contacts[index % 8].set_nickname(str);
 	}
 	str = "";
 	while (!std::cin.eof() && str == "")
@@ -69,7 +73,7 @@ void	PhoneBook::add_contact(void)
 		if (getline(std::cin, str) && str != "")
 		{
 			if (is_validNumber(str))
-				this->contacts[index].set_number(str);
+				this->contacts[index % 8].set_number(str);
 			else
 			{
 				std::cout << "Introduce only digits\n";
@@ -82,12 +86,26 @@ void	PhoneBook::add_contact(void)
 	{
 		std::cout << "Darkest Secret: ";
 		if (getline(std::cin, str) && str != "")
-			this->contacts[index].set_darksecret(str);
+			this->contacts[index % 8].set_darksecret(str);
 	}
 	std::cout << "Contact Added successfully" << std::endl;
-	
-	//this->index = (index + 1) % 8;
-	//if (this->size < 8)
-	//	this->size++;
+	this->index++;
 }
 
+void	PhoneBook::print(void)
+{
+	int	i;
+
+	i = this->index;
+	while (index >= 0)
+	{
+		std::cout << "*---------------------------------*" << std::endl;
+		std::cout << "name: ";
+		std::cout << this->contacts[index].get_firstname();
+		std::cout << std::endl;
+		std::cout << "index: ";
+		std::cout << this->index;
+		std::cout << std::endl;
+		index--;
+	}
+}

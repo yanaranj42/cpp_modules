@@ -13,6 +13,10 @@ int main()
         std::getline(std::cin, input);
         if (input == "ADD")
             phonebook.add_contact();
+        else if (input == "PRINT")
+            phonebook.print();
+        //else if (input == "SEACH")
+        //    phonebook.search_contact(input);//le pasamos un str
         else if (input == "EXIT")
 			break;
 		else

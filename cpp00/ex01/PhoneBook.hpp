@@ -9,14 +9,15 @@ class PhoneBook
 {
 	private:
 		Contact contacts[8];
-		//int	size;
 		int	index;
+		//int	size;
 	public:
         PhoneBook();
         ~PhoneBook();
 		//int get_size(void) const;
 		void add_contact(void);
-		//void seach_contact(int i) const;
+		void print(void);
+		//void search_contact(std::string input) const;
 		//void display(void)const;
         void welcome(void)const;
 };
