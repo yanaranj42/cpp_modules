@@ -12,19 +12,19 @@ const std::string& Contact::get_firstname(void) const
 }
 const std::string& Contact::get_lastname(void) const
 {
-    return (this->firstname);
+    return (this->lastname);
 }
 const std::string& Contact::get_nickname(void) const
 {
-    return (this->firstname);
+    return (this->nickname);
 }
 const std::string& Contact::get_number(void) const
 {
-    return (this->firstname);
+    return (this->number);
 }
 const std::string& Contact::get_darksecret(void) const
 {
-    return (this->firstname);
+    return (this->darksecret);
 }
 
 void Contact::set_firstname(std::string firstname)

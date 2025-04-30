@@ -2,13 +2,6 @@
 #define CONTACT_H
 #include <string>
 
-/* tenemos atributos privados que pertenecen a un contacto
-De manera publica tenemos la funcion get y set para encapsular el input
-en cada fiel del contacto. Y lo ponemos const para que a la hora de ser
-llamado, este no se copie ni sea modificado.
-Y ponemos constructor para inicializar los miembros de la clase al crear el obj
-Y el destructor para liberar los recursos antes de eliminar el miembro de la clase 
-*/
 class Contact
 {
     private:
