@@ -13,6 +13,8 @@ int is_validNumber(std::string input)
 
 	i = 0;
 	len = 0;
+	if (!input[0])
+		return (0);
 	while (input[len])
 		len++;
 	if (len > 9)
@@ -46,7 +48,7 @@ std::string Contact::set_number(std::string info)
 			std::cout << "Bye, Bye!!🫰" << std::endl;
 			exit(2);
 		}
-		if (input == "")
+		if (input.empty())
 			std::cout << "Phonebook expects a " << info << std::endl;
 		if (is_validNumber(input))
 			return (input);
