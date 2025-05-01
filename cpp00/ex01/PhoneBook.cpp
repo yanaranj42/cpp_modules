@@ -1,32 +1,5 @@
 #include "PhoneBook.hpp"
 
-int is_validNumber(std::string input)
-{
-	int i;
-	int len;
-
-	i = 0;
-	len = 0;
-	while (input[len])
-		len++;
-	if (len > 9)
-	{
-		std::cout << "Number cannot contain more than 9 digits" << std::endl;
-		return (0);
-	}
-	while (i < len)
-	{
-		if (input[i] >= '0' && input[i] <= '9')
-			i++;
-		else
-		{
-			std::cout << "Introduce only digits\n";
-			return(0);
-		}
-	}
-    return (1);
-}
-
 PhoneBook::PhoneBook()
 {
 	this->size = 0;
@@ -57,49 +30,8 @@ void	PhoneBook::add_contact(void)
 	}
 	if (size < 8)
 		size++;
-	std::cout << size << std::endl;
-	str = "";
-	while (!std::cin.eof() && str == "")
-	{
-		std::cout << "First Name: ";
-		if (getline(std::cin, str) && str != "")
-			this->contacts[this->index % 8].set_firstname(str);
-	}
-	str = "";
-	while (!std::cin.eof() && str == "")
-	{
-		std::cout << "Last Name: ";
-		if (getline(std::cin, str) && str != "")
-			this->contacts[this->index % 8].set_lastname(str);
-	}
-	str = "";
-	while (!std::cin.eof() && str == "")
-	{
-		std::cout << "Nickname: ";
-		if (getline(std::cin, str) && str != "")
-			this->contacts[this->index % 8].set_nickname(str);
-	}
-	str = "";
-	while (!std::cin.eof() && str == "")
-	{
-		std::cout << "Phone Number: ";
-		if (getline(std::cin, str) && str != "")
-		{
-			if (is_validNumber(str))
-				this->contacts[this->index % 8].set_number(str);
-			else
-			{
-				str = "";
-			}
-		}
- 	}
-	str = "";
-	while (!std::cin.eof() && str == "")
-	{
-		std::cout << "Darkest Secret: ";
-		if (getline(std::cin, str) && str != "")
-			this->contacts[this->index % 8].set_darksecret(str);
-	}
+	this->contacts[index % 8].newContact();
+	
 	std::cout << "\n✅Contact Added successfully✅" << std::endl;
 	this->index++;
 }
@@ -154,7 +86,7 @@ void	PhoneBook::search_contact(void) const
 	}
 	else
 	{
-		std::cout << " ______________________________-_____________ " << std::endl;
+		std::cout << " ____________________________________________ " << std::endl;
 		std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
 		std::cout << "|----------|----------|----------|----------|" << std::endl;
 		while (i < size)
@@ -167,10 +99,13 @@ void	PhoneBook::search_contact(void) const
 		}
 		std::cout << " ___________________________________________ " << std::endl;
 	}
-	while (!std::cin.eof())
+	while (1)
 	{
 		std::cout << "Select an Index: ";
-		if (getline(std::cin, input) && input != "")
+		getline(std::cin, input);
+		if (!std::cin)
+			exit(2);
+		if (input != "")
 		{
 			if (input.size() == 1 && input[0] >= '0' && input[0] <= '7')
 			{
@@ -182,6 +117,5 @@ void	PhoneBook::search_contact(void) const
 		}
 		else if (input == "")
 			std::cout << "Try again 🔃" << std::endl;
-
 	}
 }
