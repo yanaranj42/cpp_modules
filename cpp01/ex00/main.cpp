@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 18:17:20 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/05/01 18:50:52 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:23:49 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 
 void randomChump(std::string name);
 Zombie *newZombie(std::string name);
+
+/*	the stacked zombie will call Z constructor, that displays the name and msg
+	in the *Z we use 'new' in order to allocate memory for this zombie. And the
+	delete operator frees the memory that was used in *Z.
+
+	Random has the same process as constructor, the difference is that this one
+	announce itself
+	Whe use brackets 'cause we want to star and end one process each time
+*/
 
 int main()
 {
@@ -30,9 +39,10 @@ int main()
 	{
 		randomChump("Boo_Zombie");
 		std::cout << std::endl;
-		//Zombie *zombie_re = new Zombie("Re_Zombie");
-		//zombie_re->announce();
-		//delete zombie_re;
+		Zombie *newZ = newZombie("New_Zombie");
+		newZ->announce();
+		delete newZ;
+		std::cout << std::endl;	
 	}
 	return (0);
 }

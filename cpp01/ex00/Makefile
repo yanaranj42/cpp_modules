@@ -6,7 +6,7 @@
 #    By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/01 16:15:07 by yanaranj          #+#    #+#              #
-#    Updated: 2025/05/01 16:43:33 by yanaranj         ###   ########.fr        #
+#    Updated: 2025/05/05 13:20:27 by yanaranj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,13 +29,13 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo "$(GREEN) BraiiiiiiinnnzzzZ Done✅"
+	@echo "$(GREEN) BraiiiiiiinnnzzzZ 🧟✅"
 clean:
 	@$(RM) $(OBJ)
 	@echo "$(OTHER)objects removed"
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "$(RED)program removed"
+	@echo "$(RED)No more braiiiinz for now🧟"
 
 re: fclean all
 

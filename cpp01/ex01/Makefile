@@ -5,30 +5,38 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/04/22 12:28:29 by yanaranj          #+#    #+#              #
-#    Updated: 2025/05/02 14:00:08 by yanaranj         ###   ########.fr        #
+#    Created: 2025/05/01 16:15:07 by yanaranj          #+#    #+#              #
+#    Updated: 2025/05/05 13:34:58 by yanaranj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = megaphone.cpp
-OBJS = ${SRC:.cpp=.o}
-RM = rm -f
-CC  = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+#COLORS
+RED = \e[1;91m
+GREEN = \e[1;92m
+OTHER = \033[38;5;154m
 
-NAME = megaphone
+SRC = main.cpp Zombie.cpp zombieHorde.cpp
+CC = c++
+CFLAGS = -Wall -Werror -Wextra -std=c++98
+RM = rm -rf
+OBJ = $(SRC:.cpp=.o)
 
-all : $(NAME)
+HEADER = Zombie.hpp Makefile
 
-$(NAME): $(OBJS) Makefile
-	$(CC) $(CPPFLAGS) $(OBJS) -o ${NAME}
+NAME = moar_brainz
 
+all: $(NAME)
+
+$(NAME): $(OBJ) $(HEADER)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@echo "$(GREEN) Moaaaaaar BraiiiinnnzzZ 🧟🧟🧟✅"
 clean:
-	$(RM) $(OBJS)
-
+	@$(RM) $(OBJ)
+	@echo "$(OTHER)objects removed"
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo "$(RED)The horde is gone 🧟🧟🧟🧟"
 
-re: fclean $(NAME)
+re: fclean all
 
-PHONY: all clean fclean re
+.PHONY: all clean fclean re
