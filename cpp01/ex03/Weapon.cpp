@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 13:10:34 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/05/07 19:07:30 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/05/07 19:51:45 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ Weapon::Weapon(std::string type)
 Weapon::~Weapon()
 {
 }
-
-/* Weapon &Weapon::operator=(const Weapon &other)
-{
-	this->type = other.type;
-	return (*this);
-} */
 const	std::string& Weapon::getType() const
 {
 	return (this->type);

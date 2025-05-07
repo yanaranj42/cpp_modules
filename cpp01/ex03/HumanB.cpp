@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 13:11:37 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/05/07 19:39:17 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/05/07 19:51:26 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 HumanB::HumanB(std::string name): name(name), weaponType(NULL)
 {
-	//this->name = name;
 	std::cout << "> " << name << " appears in misteriuos circumstances" << std::endl;
 }
 HumanB::~HumanB()
