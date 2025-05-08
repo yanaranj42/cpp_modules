@@ -6,7 +6,7 @@
 #    By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/30 20:39:21 by yanaranj          #+#    #+#              #
-#    Updated: 2025/05/08 13:41:43 by yanaranj         ###   ########.fr        #
+#    Updated: 2025/05/08 13:43:01 by yanaranj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,21 +14,21 @@
 RED = \e[1;91m
 GREEN = \e[1;92m
 
-SRC = main.cpp
+SRC = main.cpp Harl.cpp
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -f
 OBJ = $(SRC:.cpp=.o)
 
-HEADER = Makefile
+HEADER = Makefile Harl.hpp
 
-NAME = replace
+NAME = Harl
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo "$(GREEN)Sed is for losers Done✅"
+	@echo "$(GREEN)Harl is ready✅"
 
 clean:
 	@$(RM) $(OBJ)
@@ -36,7 +36,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "$(RED)no more replace"
+	@echo "$(RED)Harl says Bye!🫰"
 
 re: fclean all
 
