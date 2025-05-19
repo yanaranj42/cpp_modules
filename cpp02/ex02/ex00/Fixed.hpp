@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 13:15:00 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/05/14 14:40:28 by yanaranj         ###   ########.fr       */
+/*   Created: 2025/05/12 12:24:56 by yanaranj          #+#    #+#             */
+/*   Updated: 2025/05/13 14:01:19 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-int main( void )
+#include <iostream>
+
+class Fixed
 {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-	return 0;
-}
+	private:
+		int value;
+		static const int bitsValue = 8;
+	public:
+		Fixed(void);
+		Fixed(const Fixed &cp);
+		Fixed &operator=(const Fixed &other);
+		~Fixed();
+		
+		int getRawBits(void) const;
+		void setRawBits(int const raw);
+};
+
+#endif
