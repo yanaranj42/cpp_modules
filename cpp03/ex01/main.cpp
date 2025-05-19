@@ -6,32 +6,34 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:52:11 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/05/19 13:29:30 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:26:05 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 void	alice_rundown(void)
 {
-	ClapTrap alice("Alice");
+	ScavTrap alice("Alice");
 
 	while (alice.getEnergy())
 	{
 		alice.attack("Target");
 	}
+	alice.guardGate();
 }
 
 void	bob_rundown(void)
 {
-	ClapTrap	bob("Bob");
+	ScavTrap	bob("Bob");
 
 	while (bob.getHealth())
 	{
-		bob.takeDamage(3);
-		bob.beRepaired(2);
+		bob.takeDamage(20);
+		bob.beRepaired(10);
 	}
 	bob.takeDamage(1);
+	bob.guardGate();
 }
 
 int	main(void)
