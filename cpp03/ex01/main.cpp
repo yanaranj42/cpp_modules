@@ -6,40 +6,60 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:52:11 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/05/19 13:26:05 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:38:05 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-void	alice_rundown(void)
+void	winterSoldier(void)
 {
-	ScavTrap alice("Alice");
-
-	while (alice.getEnergy())
+	ScavTrap soldier("Winter Soldier");
+	ScavTrap copy = soldier;
+	ClapTrap none;
+	
+	std::cout << std::endl;
+	none.attack("target");
+	while (soldier.getHealth())
 	{
-		alice.attack("Target");
+		soldier.takeDamage(20);
+		soldier.beRepaired(2);
+		std::cout << GREEN"Now " << soldier.getName() << " has [" << soldier.getHealth() << "] points of health" << std::endl;
+		std::cout << END;
 	}
-	alice.guardGate();
+	std::cout << END <<std::endl;
 }
 
-void	bob_rundown(void)
-{
-	ScavTrap	bob("Bob");
 
-	while (bob.getHealth())
+void	captainAmerica(void)
+{
+	ScavTrap capi("Captain America");
+	ScavTrap soldier("Winter Soldier");
+	ClapTrap copy = soldier;
+
+	std::cout << std::endl;
+	capi.attack("Winter Soldier");
+	soldier.takeDamage(capi.getDamage());
+	copy.beRepaired(1);
+	while (capi.getEnergy())
 	{
-		bob.takeDamage(20);
-		bob.beRepaired(10);
+		capi.attack("Winter Soldier");
+		if (soldier.getHealth() > 0)
+		{	
+			soldier.takeDamage(capi.getDamage());
+			soldier.beRepaired(4);
+			std::cout << YELLOW"Now " << soldier.getName() << " it has [" << soldier.getHealth() << "] points of health" << std::endl;
+			std::cout << END;
+		}
 	}
-	bob.takeDamage(1);
-	bob.guardGate();
+	std::cout << END << std::endl;
 }
+
 
 int	main(void)
 {
-	std::cout << std::endl << std::endl << "\033[34mPerforming Alice's rundown...\033[0m" << std::endl << std::endl;
-	alice_rundown();
-	std::cout << std::endl << std::endl << "\033[34mPerforming Bob's rundown...\033[0m" << std::endl << std::endl;
-	bob_rundown();
+	std::cout << std::endl <<  "\033[34mCaptain America's Performance...\033[0m" << std::endl;
+	captainAmerica();
+	std::cout << std::endl <<  "\033[34mWinter Soldier's Performance...\033[0m" << std::endl;
+	winterSoldier();
 }

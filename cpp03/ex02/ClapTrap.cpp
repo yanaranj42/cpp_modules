@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:52:01 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/05/20 13:06:36 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/05/20 17:12:40 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ ClapTrap::ClapTrap(ClapTrap const &copy){
 }
 
 ClapTrap::~ClapTrap(){
-	std::cout << "Calling ClapTrap Destructor" << std::endl;
+	std::cout << _name << " ClapTrap destructor" << std::endl;
 }
 
 /*FUNCTIONS*/
@@ -62,8 +62,8 @@ void ClapTrap::takeDamage(unsigned int amount){
 		_pHealth -= amount;
 		std::cout << END;
 	}
-	else
-		std::cout << RED"ClapTrap " << _name << " is not longer with us." << END << std::endl;
+	if (_pHealth <= 0)
+		std::cout << RED" ClapTrap " << _name << " is not longer with us." << END << std::endl;
 	if (_pHealth < 0)
 		_pHealth = 0;
 }

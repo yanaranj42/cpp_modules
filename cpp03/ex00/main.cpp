@@ -6,38 +6,51 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:52:11 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/05/19 13:29:30 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:26:30 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-void	alice_rundown(void)
+void	winterSoldier(void)
 {
-	ClapTrap alice("Alice");
-
-	while (alice.getEnergy())
+	ClapTrap soldier("Winter Soldier");
+	ClapTrap copy = soldier;
+	ClapTrap none;
+	
+	std::cout << std::endl;
+	none.attack("target");
+	while (soldier.getHealth())
 	{
-		alice.attack("Target");
+		soldier.takeDamage(3);
+		soldier.beRepaired(2);
+		std::cout << GREEN"Now " << soldier.getName() << " has [" << soldier.getHealth() << "] points of health" << std::endl;
+		std::cout << END;
 	}
+	std::cout << std::endl;
 }
 
-void	bob_rundown(void)
-{
-	ClapTrap	bob("Bob");
 
-	while (bob.getHealth())
-	{
-		bob.takeDamage(3);
-		bob.beRepaired(2);
-	}
-	bob.takeDamage(1);
+void	captainAmerica(void)
+{
+	ClapTrap capi("Captain America");
+	ClapTrap copy = capi;
+	ClapTrap soldier("Winter Soldier");
+
+	std::cout << std::endl;
+	capi.attack("Winter Soldier");
+	soldier.takeDamage(capi.getDamage());
+	copy.beRepaired(7);
+	std::cout << GREEN"Now " << copy.getName() << " it has [" << copy.getHealth() << "] points of health" << std::endl;
+	while (capi.getEnergy())
+		capi.attack("Winter Soldier");
+	std::cout << std::endl;
 }
 
 int	main(void)
 {
-	std::cout << std::endl << std::endl << "\033[34mPerforming Alice's rundown...\033[0m" << std::endl << std::endl;
-	alice_rundown();
-	std::cout << std::endl << std::endl << "\033[34mPerforming Bob's rundown...\033[0m" << std::endl << std::endl;
-	bob_rundown();
+	std::cout << std::endl <<  "\033[34mCaptain America's Performance...\033[0m" << std::endl;
+	captainAmerica();
+	std::cout << std::endl <<  "\033[34mWinter Soldier's Performance...\033[0m" << std::endl;
+	winterSoldier();
 }
