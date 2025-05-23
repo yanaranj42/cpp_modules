@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:52:11 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/05/20 18:37:32 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/05/22 17:21:33 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	captainAmerica(void)
 
 int	main(void)
 {
-	//std::cout << std::endl <<  "\033[34mCaptain America's Performance...\033[0m" << std::endl;
-	//captainAmerica();
+	std::cout << std::endl <<  "\033[34mCaptain America's Performance...\033[0m" << std::endl;
+	captainAmerica();
 	std::cout << std::endl <<  "\033[34mWinter Soldier's Performance...\033[0m" << std::endl;
 	winterSoldier();
 }
