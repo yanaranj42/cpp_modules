@@ -6,30 +6,29 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 12:24:33 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/05/23 15:33:50 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/05/23 16:15:43 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat(void){
+WrongCat::WrongCat(void) : WrongAnimal("Cat"){
 	_type = "Cat";
 	_type.append("_wrong");
 	std::cout << _type << " default Wrong_Cat class is constructed" << std::endl;
 }
 WrongCat::WrongCat(const std::string name) : WrongAnimal(name){
 	_type = name;
-	std::cout << _type << "assigned Wrong_Cat class is constructed" << std::endl;
+	std::cout << _type << "assigned Wrong Cat class is constructed" << std::endl;
 }
 WrongCat::WrongCat(const WrongCat &copy){
 	*this = copy;
-	std::cout << _type << " copy Wrong_Cat class is constructed" << std::endl;
+	std::cout << _type << " copy Wrong Cat class is constructed" << std::endl;
 }
 WrongCat &WrongCat::operator=(const WrongCat &op){
 	if (this != &op)
 		_type = op.getType();
 	_type.append("_copy");
-	std::cout << "hola!!!!!!!!!!!!!" << std::endl;
 	return (*this);
 }
 
