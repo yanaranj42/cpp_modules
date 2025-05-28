@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 11:44:33 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/05/28 16:12:11 by yanaranj         ###   ########.fr       */
+/*   Created: 2025/05/21 12:24:15 by yanaranj          #+#    #+#             */
+/*   Updated: 2025/05/28 13:03:50 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
-#include <iostream>
 #include "Animal.hpp"
+#include <iostream>
+#include <sstream>
+#include <string>
 
-class Brain
+class Cat : public Animal
 {
 	private:
-		std::string _ideas[100];
-		unsigned int size;
+		Brain *_brain;
 	public:
-		Brain(void);
-		Brain(const Brain &cp);
-		Brain &operator=(const Brain &op);
-		virtual ~Brain();
+		Cat(void);
+		Cat(const std::string name);
+		Cat(const Cat &copy);
+		Cat &operator=(const Cat &op);
+		~Cat(void);
 		
-		void _createIdeas(std::string idea);
-		void printIdeas() const;
+		void makeSound(void) const;
+		void getIdeas(void) const;
 };
 
+//std::ostream &operator<<(std::ostream &oss, const Cat &cat);//if we want to do a request
 #endif

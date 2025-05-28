@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 11:44:33 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/05/28 16:12:11 by yanaranj         ###   ########.fr       */
+/*   Created: 2025/05/21 12:24:21 by yanaranj          #+#    #+#             */
+/*   Updated: 2025/05/28 13:03:28 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#ifndef DOG_HPP
+#define DOG_HPP
 
-#include <iostream>
 #include "Animal.hpp"
+#include <iostream>
 
-class Brain
+class Dog : public Animal
 {
 	private:
-		std::string _ideas[100];
-		unsigned int size;
+		Brain *_brain;
 	public:
-		Brain(void);
-		Brain(const Brain &cp);
-		Brain &operator=(const Brain &op);
-		virtual ~Brain();
+		Dog(void);
+		Dog(const std::string name);
+		Dog(const Dog &copy);
+		Dog &operator=(const Dog &op);
+		~Dog(void);
 		
-		void _createIdeas(std::string idea);
-		void printIdeas() const;
+		void makeSound(void) const;
+		void getIdeas(void) const;
 };
 
 #endif
