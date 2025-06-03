@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 12:17:37 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/05/23 16:08:52 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/05/28 17:04:44 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ Animal::Animal(const Animal &copy){
 Animal &Animal::operator=(const Animal &op){
 	if (this != &op)
 		_type = op.getType();
-	//std::cout << "holaaaaaaaaaaa" << std::endl;
 	return (*this);
 }
 Animal::~Animal(void){
