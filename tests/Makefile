@@ -6,7 +6,7 @@
 #    By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/30 20:39:21 by yanaranj          #+#    #+#              #
-#    Updated: 2025/06/02 13:15:18 by yanaranj         ###   ########.fr        #
+#    Updated: 2025/06/03 16:25:36 by yanaranj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ GREEN = \e[1;92m
 SRC = Test.cpp main.cpp DerivedA.cpp Inherit.cpp
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
-RM = rm -f
+RM = rm -rf
 
 OBJDIR = obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.cpp=.o))
