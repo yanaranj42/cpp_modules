@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 13:47:00 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/06/20 16:52:34 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/06/30 17:56:29 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,19 @@ class Bureaucrat
 		std::string getName() const;
 		int getGrade() const;
 
-		void incrementGrade(int i);
-		void decrementGrade(int i);
+		void incrementGrade();
+		void decrementGrade();
 
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				virtual const char *what() const throw(){
-					return ("Grade too high!");
-				}
+				virtual const char *what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				virtual const char *what() const throw(){
-					return ("Grade too low!");
-				}
+				virtual const char *what() const throw();
 		};
 };
 
