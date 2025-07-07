@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 14:50:31 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/07/03 19:10:47 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/07/07 13:08:22 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 #include "Bureaucrat.hpp"
 #include <exception>
 
+# define RESET "\x1b[0m"
+# define RED "\e[1;91m"
+# define GREEN "\e[1;92m"
+# define YELLOW "\e[1;93m"
+# define BLUE "\033[34m"
 
 class Bureaucrat;
 

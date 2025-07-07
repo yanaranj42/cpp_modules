@@ -13,7 +13,7 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target("Default") {}
-RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target){
+RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm(target, 72, 45), _target(target){
 }
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &cp){
 	*this = cp;
@@ -33,12 +33,9 @@ std::string RobotomyRequestForm::getTarget() const{
 }
 
 void RobotomyRequestForm::execAction() const{
-	std::cout << "*🔩 Drilling noises... 🔩*" << std::endl;
-
-	std::srand(std::time(0));
-
+	std::cout << "🔩 Drilling noises... 🔩" << std::endl;
 	if (std::rand() % 2)
-		std::cout << "❌ Oh no! Robotomy process failed... ❌" << std::endl;
+		std::cerr << "❌ Oh no! Robotomy process failed... ❌" << std::endl;
 	else
 		std::cout << "Hehe!😼 Robotomy process was a success🤖 " << std::endl;
 }

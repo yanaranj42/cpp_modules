@@ -6,14 +6,14 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 17:53:38 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/07/03 19:19:45 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/07/07 14:10:42 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), _target("Default") {}
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target){
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm(_target, 145, 137), _target("Default") {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm(target, 145, 137), _target(target){
 }
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &cp){
 	*this = cp;
@@ -41,15 +41,15 @@ void ShrubberyCreationForm::execAction() const{
 		throw std::runtime_error("Cannot open this file");
 	}
 
-	outfile << "    /\\   " << std::endl
-			<< "   /**\\  " << std::endl
-			<< "  /****\\ " << std::endl
-			<< " /******\\" << std::endl
-			<< "/********\\" << std::endl
-			<< "    ||   " << std::endl
-			<< "    ||   " << std::endl;
+	outfile << "    /\\    	    /\\    	    /\\    " << std::endl
+			<< "   /**\\   	   /**\\   	   /**\\   " << std::endl
+			<< "  /****\\  	  /****\\  	  /****\\  " << std::endl
+			<< " /******\\ 	 /******\\ 	 /******\\ " << std::endl
+			<< "/********\\	/********\\	/********\\" << std::endl
+			<< "    ||     	    ||     	    ||     " << std::endl
+			<< "    ||     	    ||     	    ||     " << std::endl;
 
 	outfile.close();
 	
-	std::cout << "Shrubbery created at file: " << fileName << std::endl;
+	std::cout << "Shrubbery created at file: [" << fileName << "]" << std::endl;
 }

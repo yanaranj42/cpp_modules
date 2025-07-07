@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:10:14 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/07/03 19:35:10 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/07/07 14:11:46 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ AForm::AForm(const AForm &cp) : _name(cp.getName()), _is_signed(false), _signGra
 }
 AForm &AForm::operator=(const AForm &op){
 	if (this != &op)
-		return (*this);
+		_is_signed = op.getIsSigned();//we can only cp the non-const member
 	return (*this);
 }
 
@@ -35,8 +35,8 @@ AForm::~AForm(){
 
 std::ostream &operator<<(std::ostream &out, const AForm &form){
 	std::cout << form.getName() << ":\t -sign grade: " << form.getSignGrade();
-	std::cout << "\n\t -is signed?: " << form.getIsSigned();
-	std::cout << "\n\t -exec grade: " << form.getExecGrade() << std::endl;
+	std::cout << "\n\t\t-is signed?: " << form.getIsSigned();
+	std::cout << "\n\t\t-exec grade: " << form.getExecGrade() << std::endl;
 	return (out);
 }
 
@@ -54,6 +54,7 @@ const bool AForm::getIsSigned() const{
 }
 
 void AForm::beSigned(const Bureaucrat &signer){ //cannot be const because we want to change the boolean value
+	std::cout << "Trying to sign form " << _name << "...\n" << std::endl;
 	if (signer.getGrade() > _signGrade){
 		throw Bureaucrat::GradeTooLowException();
 	}
@@ -62,7 +63,7 @@ void AForm::beSigned(const Bureaucrat &signer){ //cannot be const because we wan
 	else
 	{
 		_is_signed = true;
-		std::cout << _name << ": has succesfully sign by " << signer.getName() << std::endl;
+		std::cout << _name << " has succesfully sign by " << signer.getName() << std::endl;
 	}
 }
 
