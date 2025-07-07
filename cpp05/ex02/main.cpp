@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 16:28:53 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/07/07 14:18:23 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:37:27 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,22 @@
 
 
 //🔩🤖✅❌
+
+/* int main(void)
+{
+	{
+		Bureaucrat Bc1;//default
+		ShrubberyCreationForm S1("Garden");
+		std::cout << Bc1 << std::endl;
+		std::cout << S1 << std::endl;
+	}
+	//RobotomyRequestForm R1;
+	RobotomyRequestForm R2("Robot");
+
+	//std::cout << R1 << std::endl;
+	std::cout << R2 << std::endl;
+} */
+
 
 int main(void)
 {
