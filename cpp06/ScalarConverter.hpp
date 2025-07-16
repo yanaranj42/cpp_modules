@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 13:14:55 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/07/14 16:10:18 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/07/15 12:32:02 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 #include <cmath>
 #include <iomanip>
 #include <limits>
+#include <float.h>
+
 enum dataType{
 	SPECIAL,
 	CHAR,

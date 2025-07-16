@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 13:39:36 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/07/14 16:06:18 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:25:47 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ ScalarConverter::~ScalarConverter(){}
 void printInfo(dataType data, const std::string &param){
 	std::cout << std::fixed << std::setprecision(3);//is printing this line at the beggining
 	if (data == CHAR){
+		std::cout << "I'm a char\n";
 		std::cout << "char: '" << param << "'\n";
 		std::cout << "int: " << static_cast<int>(param.at(0)) << "\n";
 		std::cout << "float: " << static_cast<float>(param.at(0)) << "f\n";
 		std::cout << "double: " << static_cast<double>(param.at(0)) << "\n";
 	}
 	if (data == INT){
+		std::cout << "I'm an int\n";
 		long num = atoi(param.c_str());
 		if (num >= 32 && num <= 126)
 			std::cout << "char: '" <<  static_cast<char>(num) << "'\n";
@@ -41,23 +43,35 @@ void printInfo(dataType data, const std::string &param){
 		std::cout << "double: " << static_cast<double>(num) << "\n";
 	}
 	if (data == FLOAT){
-		float num = std::stof(param);		
+		std::cout << "I'm a float\n";
+		double num = std::stof(param);
+		std::cout << GREEN << num << "!\n";
 		if (num >= 32.0 && num <= 126.0)
 			std::cout << "char: '" <<  static_cast<char>(num) << "'\n";
 		else
 			std::cout << "char: Impossible\n";
-		std::cout << "int: " << static_cast<int>(num) << "\n";
+		if (num < INT_MIN || num > INT_MAX)
+			std::cout << "int: Impossible\n";
+		else
+			std::cout << "int: " << static_cast<int>(num) << "\n";
 		std::cout << "float: " << static_cast<float>(num) << "f\n";
 		std::cout << "double: " << static_cast<double>(num) << "\n";
 	}
 	if (data == DOUBLE){
-		float num = std::stof(param);
+		std::cout << "I'm a double\n";
+		double num = std::stod(param);
 		if (num >= 32.0 && num <= 126.0)
 			std::cout << "char: '" <<  static_cast<char>(num) << "'\n";
 		else
 			std::cout << "char: Impossible\n";
-		std::cout << "int: " << static_cast<int>(num) << "\n";
-		std::cout << "float: " << static_cast<float>(num) << "f\n";
+		if (num < INT_MIN || num > INT_MAX)
+			std::cout << "int: Impossible\n";
+		else
+			std::cout << "int: " << static_cast<int>(num) << "\n";
+		if (num < FLT_MIN || num > FLT_MAX)
+			std::cout << "float: Impossible\n";
+		else
+			std::cout << "float: " << static_cast<float>(num) << "f\n";
 		std::cout << "double: " << static_cast<double>(num) << "\n";
 	}
 }
