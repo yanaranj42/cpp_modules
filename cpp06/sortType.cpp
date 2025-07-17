@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 13:42:25 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/07/16 13:24:40 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/07/17 12:47:46 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,12 @@ static bool isChar(const std::string &param, int len){
 }
 
 static bool isInt(const std::string &param, int len){
-	char *endc;
+	char *end;
 
-	double num = strtod(param.c_str(), &endc);
-	if (num < INT_MIN || num > INT_MAX){
-		std::cout << "out of int limits\n";
+	double num = strtod(param.c_str(), &end);
+	if (num < INT_MIN || num > INT_MAX)
 		return (false);
-	}
-	if ((param[0] == '0' && len == 1) || param[len] == 'f')
+	if ((param[0] == '0' && len == 1) || param[len - 1] == 'f')
 		return (false);
 	int i = 0;
 	if (param[0] == '-' || param[0] == '+')
@@ -56,11 +54,9 @@ static bool isSpecial(const std::string &param, int len){
 static bool isFloat(const std::string &param, int len){
 	char *end;
 	errno = 0;
-	std::cout << YELLOW << std::strtof(param.c_str(), &end) << std::endl;
-	if (errno == ERANGE){
+	float num = std::strtof(param.c_str(), &end);
+	if (errno == ERANGE)
 		return (false);
-		std::cout << "FLOAT out of range\n";
-	}
 	if (*end != 'f' && *end + 1 != '\0' || param.size() <= 1)
 		return (false);
 	return (true);
@@ -70,17 +66,11 @@ static bool isDouble(const std::string &param, int len){
 	char *end;
 	errno = 0;
 	
-	std::strtod(param.c_str(), &end);
-	//std::cout << GREEN << std::strtof(param.c_str(), &end) << std::endl;
-	if (errno == ERANGE){
-		std::cout << "double out of limit\n";
+	double num = std::strtod(param.c_str(), &end);
+	if (errno == ERANGE)
 		return (false);
-	}
 	if ((*end != '\0' && len > 1))
-	{
-		std::cout << "not a digit\n";
 		return (false);
-	}
 	return (true);
 }
 
@@ -96,6 +86,4 @@ dataType sortType(const std::string &param, int len){
 	if (isDouble(param, len))
 		return (DOUBLE);
 	return (NOTYPE);
-	//if char: *
-	/*int:42. float: 42.0f double: 42.0*/
 }

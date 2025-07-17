@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 13:39:36 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/07/16 13:25:47 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/07/17 12:50:36 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,19 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &op){
 ScalarConverter::~ScalarConverter(){}
 
 void printInfo(dataType data, const std::string &param){
-	std::cout << std::fixed << std::setprecision(3);//is printing this line at the beggining
+
+	char *end = 0;
+	std::cout << std::fixed << std::setprecision(3);
 	if (data == CHAR){
-		std::cout << "I'm a char\n";
+		std::cout << RED;
 		std::cout << "char: '" << param << "'\n";
 		std::cout << "int: " << static_cast<int>(param.at(0)) << "\n";
 		std::cout << "float: " << static_cast<float>(param.at(0)) << "f\n";
 		std::cout << "double: " << static_cast<double>(param.at(0)) << "\n";
 	}
 	if (data == INT){
-		std::cout << "I'm an int\n";
-		long num = atoi(param.c_str());
+		std::cout << BLUE;
+		int num = atoi(param.c_str());
 		if (num >= 32 && num <= 126)
 			std::cout << "char: '" <<  static_cast<char>(num) << "'\n";
 		else
@@ -43,9 +45,8 @@ void printInfo(dataType data, const std::string &param){
 		std::cout << "double: " << static_cast<double>(num) << "\n";
 	}
 	if (data == FLOAT){
-		std::cout << "I'm a float\n";
-		double num = std::stof(param);
-		std::cout << GREEN << num << "!\n";
+		std::cout << GREEN;	
+		float num = std::strtof(param.c_str(), &end);
 		if (num >= 32.0 && num <= 126.0)
 			std::cout << "char: '" <<  static_cast<char>(num) << "'\n";
 		else
@@ -58,24 +59,23 @@ void printInfo(dataType data, const std::string &param){
 		std::cout << "double: " << static_cast<double>(num) << "\n";
 	}
 	if (data == DOUBLE){
-		std::cout << "I'm a double\n";
-		double num = std::stod(param);
+		std::cout << YELLOW;
+		double num = std::strtod(param.c_str(), &end);
 		if (num >= 32.0 && num <= 126.0)
-			std::cout << "char: '" <<  static_cast<char>(num) << "'\n";
+			std::cout << "char: '" << static_cast<char>(num) << "'\n";
 		else
 			std::cout << "char: Impossible\n";
 		if (num < INT_MIN || num > INT_MAX)
 			std::cout << "int: Impossible\n";
 		else
 			std::cout << "int: " << static_cast<int>(num) << "\n";
-		if (num < FLT_MIN || num > FLT_MAX)
+		if (num < -FLT_MAX || num > FLT_MAX)
 			std::cout << "float: Impossible\n";
 		else
 			std::cout << "float: " << static_cast<float>(num) << "f\n";
 		std::cout << "double: " << static_cast<double>(num) << "\n";
 	}
 }
-
 
 void ScalarConverter::convert(std::string &param){
 
@@ -124,4 +124,3 @@ void msgPrint(const std::string &param){
 		std::cout << "double: 0.0\n";
 	}
 }
-
