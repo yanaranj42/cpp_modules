@@ -6,7 +6,7 @@
 #    By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/30 20:39:21 by yanaranj          #+#    #+#              #
-#    Updated: 2025/07/24 12:06:22 by yanaranj         ###   ########.fr        #
+#    Updated: 2025/07/28 13:14:34 by yanaranj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,11 @@ GREEN = \e[1;92m
 
 SRC = main.cpp
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CFLAGS = -Wall -Werror -Wextra -std=c++98 
 RM = rm -f
 OBJ = $(SRC:.cpp=.o)
 
-HEADER = Makefile Array.hpp
+HEADER = Array.hpp Array.tpp Makefile
 
 NAME = array
 
