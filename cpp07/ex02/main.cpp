@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 11:50:56 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/07/28 13:45:05 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/07/29 15:34:34 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,18 @@ int main(void)
 	Array<int> table(MAX_VAL);
 	const Array<int> nums(MAX_VAL);
 	
-    srand(time(NULL));
+	srand(time(NULL));
 	std::cout << YELLOW << nums << std::endl;
-	for (int i = 0; i < MAX_VAL; i++){
-		const int value = rand();
-		table[i] = value;
+	try{
+		for (int i = 0; i < MAX_VAL; i++){
+			const int value = rand();
+			table[i] = value;
 		//nums[i] = number;//must be non const;
+		}
+	}
+	catch(const std::exception& e){
+		std::cout << RESET;
+		std::cerr << e.what() << '\n';
 	}
 	//Have the same address, so they have the same values.
 	{
