@@ -21,6 +21,13 @@
 
 #include <stack>
 
+/*Stack does not have Iterators because is not a container by itself.
+Usually stores the elements inside of an underlying stl, like deque(default). 
+To define all this iterator member functions, we will use ‘container_type’.
+This is a public typedef that names the type of the underlying container
+(it help us to create an alias for the iterator)
+
+*/
 template <typename T>
 class MutantStack : public std::stack<T>
 {
