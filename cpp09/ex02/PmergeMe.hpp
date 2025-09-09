@@ -41,10 +41,13 @@ class PmergeMe
 		std::deque<int> _deque;
 		std::deque<int> _OrgDeque;
 
-		//std::vector<int> jacobsthalGenerator(int i);
+		std::vector<int> jacobsthalGenerator(int i);
 
 		void check_dups(const std::vector<int> &vector);
 		void check_dups(const std::deque<int> &deque);
+		void binaryInsert(std::vector<int> &lst, int num);
+		void binaryInsert(std::deque<int> &lst, int num);
+		void insertLater(std::vector<int> &now, std::vector<int> &later)
 
 	public:
 		PmergeMe();
@@ -59,8 +62,8 @@ class PmergeMe
 
 		void parse_input(int ac, char **av);
 		void check_token(const std::string &token);
-		void insertionSort(const std::vector<int> &lst);
-		void insertionSort(const std::deque<int> &lst);
+		void pairSort(const std::vector<int> &lst);
+		void pairSort(const std::deque<int> &lst);
 };
 
 
