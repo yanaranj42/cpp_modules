@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 17:39:36 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/09/04 16:54:22 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/09/10 15:30:53 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 #include <sstream>
 #include <exception>
 #include <climits>
+#include <iomanip>
 
 
 class PmergeMe
@@ -47,7 +48,8 @@ class PmergeMe
 		void check_dups(const std::deque<int> &deque);
 		void binaryInsert(std::vector<int> &lst, int num);
 		void binaryInsert(std::deque<int> &lst, int num);
-		void insertLater(std::vector<int> &now, std::vector<int> &later)
+		void insertLater(std::vector<int> &now, std::vector<int> &later);
+		void insertLater(std::deque<int> &now, std::deque<int> &later);
 
 	public:
 		PmergeMe();
@@ -62,8 +64,8 @@ class PmergeMe
 
 		void parse_input(int ac, char **av);
 		void check_token(const std::string &token);
-		void pairSort(const std::vector<int> &lst);
-		void pairSort(const std::deque<int> &lst);
+		void pairSort(std::vector<int> &lst);
+		void pairSort(std::deque<int> &lst);
 };
 
 

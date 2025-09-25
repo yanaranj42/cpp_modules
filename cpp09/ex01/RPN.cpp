@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 13:08:47 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/09/02 15:53:30 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/09/25 12:19:30 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ bool RPN::parse_input(const std::string &input){
 	for (unsigned int i = 0; i < input.size(); i++){
 		if (!isdigit(input[i])){
 			if (!isOperand(input[i]) && !isspace(input[i])){
-				throw std::runtime_error ("Error");
+				throw std::runtime_error ("Error: invalid character found");
 				return false;
 			}
 		}
@@ -117,7 +117,7 @@ void  RPN::doRPN(const std::string &input){
 					_rpnStack.pop();
 					op_b = _rpnStack.top();
 					_rpnStack.pop();
-					if (op_a != 0){
+					if (op_a != 0 && op_b != 0){
 						op_a = op_b / op_a;
 						_rpnStack.push(op_a);
 					}

@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 17:05:28 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/08/25 16:10:24 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/09/25 12:14:23 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ bool BitcoinExchange::opening_file(const std::string &filename){
 	return (true);
 }
 
-//here i'm just recieving the path of the file. Since is const, it won't be change
 bool BitcoinExchange::loadDataBase(const std::string &file){
 
 	std::string line;
 	std::ifstream db_file(file.c_str());
-	if(!opening_file(file))
-		return false;
+	if(!opening_file(file)){
+		throw std::runtime_error("Error opening Data Base file\n");
+	}
 	bool first_line = true;
 	
 	while (std::getline(db_file, line)){
@@ -71,7 +71,7 @@ bool BitcoinExchange::loadDataBase(const std::string &file){
 		}
 		else{
 			std::pair<std::string, float> dataRate = std::make_pair(date, rateStr);
-			_btcDB.insert(dataRate);//insert the pair key-value inside the map
+			_btcDB.insert(dataRate);
 		}		
 	}
 	return (true);
@@ -80,35 +80,33 @@ bool BitcoinExchange::loadDataBase(const std::string &file){
 float BitcoinExchange::doOperations(std::string &date, float op)
 {
 	std::map<std::string, float>::iterator it = _btcDB.begin();
-
-	for (; it != _btcDB.end() && it->first <= date; ++it)
-	{
+	
+	for (; it != _btcDB.end() && it->first <= date; ++it){
 		if (it->first == date)
 			return it->second * op;
 	}
-	if (it == _btcDB.end())
-	{
+	if (it == _btcDB.begin()){
+		std::cerr << RED << "No data available before " << date << "\n" << RESET;
+		return -1;
+	}
+	if (it == _btcDB.end()){
 		--it;
 		return it->second * op;
 	}
-	if (it->first > date)
-	{
+	if (it->first > date){
 		--it;
 		return it->second * op;
 	}
 	return -1;
 }
 
-
-//this is the av[1] and should parse and multiply with the data base
 void BitcoinExchange::btcExchange(const std::string &file){
-	std::ifstream input_file(file.c_str());//I've already checked if the file is valid
+	std::ifstream input_file(file.c_str());
 	
 	std::string str;
 	bool first_line = true;
 	while (std::getline(input_file, str)){
 		std::string line(str);
-		//vvv it allows us to have a clean line so we can start parsing the date and amount
 		line.erase(std::remove(line.begin(), line.end(), ' '), line.end());
 		if (first_line){
 			if (line != "date|value")

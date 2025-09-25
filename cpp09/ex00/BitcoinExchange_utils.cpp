@@ -6,7 +6,7 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:05:45 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/08/25 15:52:22 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/09/23 16:23:58 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ float BitcoinExchange::validRate(std::string &rate){
 	return (op);
 }
 
-//this kind of functions can not throw an exception, 'cause we want to continue reading the rest of the file
 float BitcoinExchange::validAmount(std::string &amount){
 	int dot = 0;
 	if  (amount[0] == '-'){
@@ -70,8 +69,7 @@ float BitcoinExchange::validAmount(std::string &amount){
 		return (-1);
 	}
 	for (unsigned int i = 0; i < amount.size(); i++){
-		if (amount[i] == '.')
-		{
+		if (amount[i] == '.'){
 			dot++;
 			if (dot > 1 || amount.at(amount.size() - 1) == '.'){
 				std::cerr << RED << "Amount bad formated: " << amount  << "\n"  << RESET;
@@ -106,11 +104,11 @@ bool BitcoinExchange::isValidFile(const std::string &filename){
 
 int BitcoinExchange::checkDir(const char *path){
 	struct stat pathStat;
-    if (stat(path, &pathStat) != 0) {
+    if (stat(path, &pathStat) != 0){
         std::cerr << "Error: " << strerror(errno) << "\n";
         return 1;
     }
-    if (S_ISDIR(pathStat.st_mode)) {
+    if (S_ISDIR(pathStat.st_mode)){
         std::cerr << RED << "Directorys are not allowed. ";
 		return (1);
 	}

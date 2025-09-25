@@ -6,17 +6,12 @@
 /*   By: yanaranj <yanaranj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 18:29:00 by yanaranj          #+#    #+#             */
-/*   Updated: 2025/08/25 15:54:57 by yanaranj         ###   ########.fr       */
+/*   Updated: 2025/09/23 16:26:12 by yanaranj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-
-/*	Brief:
-		First we check if we have all the arguments. If it's the case, we check
-		if it's a directory or regular file.
-*/
 int main(int ac, char **av)
 {
 	BitcoinExchange mybtc;
@@ -26,10 +21,12 @@ int main(int ac, char **av)
 		std::cerr << "Try:" << RESET << "./btc whatever.txt\n";
 		return (1);
 	}
-	if (!mybtc.isValidFile(av[1]))
+	if (!mybtc.isValidFile(av[1])){
+		std::cerr << RED << "Error: files must be on .txt or .csv format\n" << RESET;	
 		return (1);
+	}
 	if (!mybtc.opening_file(av[1]) || mybtc.checkDir(av[1]))
-		return (1);	
+		return (1);
 	try{
 		mybtc.loadDataBase("data.csv");
 		std::cout << YELLOW << "\n ----------------------------\n";
